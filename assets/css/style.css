@@ -75,7 +75,7 @@ main {
 }*/
 
 .card-container-character {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -105,7 +105,7 @@ main {
     font-size: 24px;
     color: black;
     margin: 0 0.5em 0  ;
-    cursor: url("./assets/img/spells-icon.png") 16 16 , auto;
+    cursor: pointer;
 
   }
                        
