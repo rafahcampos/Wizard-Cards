@@ -288,3 +288,77 @@ const editCard = (event) =>{
 	})
 	closeModal(null, 'edit-form-modal')
 }
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter API</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="characterNameInput" placeholder="Digite o nome do personagem">
+        <button id="searchButton">Buscar</button>
+    </div>
+    <div class="character-details"></div>
+
+    <script>
+        const apiCharacters = "https://hp-api.herokuapp.com/api/characters";
+
+        async function getApiCharacter(api) {
+            try {
+                const response = await fetch(api);
+
+                if (!response.ok) {
+                    throw new Error(`Erro! Status da resposta: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Erro fetch ou Json', error);
+            }
+        }
+
+        function displayCharacterDetails(data, characterName) {
+            const containerCharacterDetails = document.querySelector('.character-details');
+
+            const character = data.find(item => item.name.toLowerCase() === characterName.toLowerCase());
+
+            if (character) {
+                const html = `
+                    <div>
+                        <h1>Nome: ${character.name}</h1>
+                        <p>Casa: ${character.house}</p>
+                        <p>Patrono: ${character.patronus}</p>
+                        <p>Ator: ${character.actor}</p>
+                        <p>Nascimento: ${character.dateOfBirth}</p>
+                        <!-- Adicione outros campos conforme necessário -->
+                    </div>
+                `;
+                containerCharacterDetails.innerHTML = html;
+            } else {
+                containerCharacterDetails.innerHTML = `<p>Personagem não encontrado</p>`;
+            }
+        }
+
+        document.getElementById('searchButton').addEventListener('click', async () => {
+            const characterName = document.getElementById('characterNameInput').value;
+            if (characterName) {
+                const data = await getApiCharacter(apiCharacters);
+                displayCharacterDetails(data, characterName);
+            } else {
+                alert('Por favor, digite um nome de personagem.');
+            }
+        });
+    </script>
+</body>
+</html>

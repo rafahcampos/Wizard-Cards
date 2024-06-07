@@ -1,14 +1,15 @@
 //https://hp-api.herokuapp.com/
-const api = ("https://hp-api.herokuapp.com/api/characters");
+const apiCharacters = ("https://hp-api.herokuapp.com/api/characters");
+//const apiSpells = ("https://hp-api.herokuapp.com/api/spells");
 
-async function getAPi(api) {
+async function getApiCharacter(api) {
     try {
         //Realizando a requisição para a API
         const response = await fetch(api);
 
         //Verifica o status da requisição
         if (!response.ok) {
-            throw new Error(`Erro! Status da reponsta: ${response.status}`);
+            throw new Error(`Erro! Status da resposta: ${response.status}`);
         }
 
         //Convertendo para JSON
@@ -26,28 +27,40 @@ async function getAPi(api) {
 };
 
 //Exibir os dados na página HTML
-function displayApiData(data) {
-    const containerCharacterName = document.querySelector('.character-name');
+function displayCharacterDetails(data, characterName) {
+    const containerCharacterDetails = document.querySelector('.character-details');
 
-    if (data) {
-        const html = data.map(item => `
+    const character = data.find(item => item.name.toLowerCase() === characterName.toLowerCase());
+
+
+    if (character) {
+
+        const html = `
         <div>
-         <h1>
-            name: ${item.name}
-        </h1>
-        </div>
-        `).join('');
+            <p>Nome: ${character.name}</p>
+            <p>Casa: ${character.species}</p>
+            <p>Casa: ${character.house}</p>
+            <p>Casa: ${character.ancestry}</p>
+        </div> `;
 
         //Insetir o html na div especifica
-        containerCharacterName.innerHTML = html;
+        containerCharacterDetails.innerHTML = html;
     } else {
-        containerCharacterName.innerHTML = `<p>Data não recebida</p>`
+        containerCharacterDetails.innerHTML = `<p>Personagem não encontrado</p>`
     }
 }
 
-//usando a função 
 
-getAPi(api).then(data => {
-    displayApiData(data)
+document.getElementById('searchButton').addEventListener('click', async () => {
+    const characterName = document.getElementById('characterNameInput').value;
+    if (characterName) {
+        const data = await getApiCharacter(apiCharacters);
+        console.log(data);
+        displayCharacterDetails(data, characterName);
+    } else {
+        alert('Por favor, digite um nome de personagem.');
+    }
 });
+
+
 
