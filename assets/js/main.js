@@ -35,12 +35,13 @@ function displayCharacterDetails(data, characterName) {
 
     if (character) {
 
+
         const html = `
         <div>
             <p>Nome: ${character.name}</p>
             <p>Casa: ${character.species}</p>
             <p>Casa: ${character.house}</p>
-            <p>Casa: ${character.ancestry}</p>
+            <p>Ancestralidade: ${character.ancestry}</p>
         </div> `;
 
         //Insetir o html na div especifica
@@ -50,17 +51,21 @@ function displayCharacterDetails(data, characterName) {
     }
 }
 
+function teste(){
+    document.getElementById('searchButton').addEventListener('click', async () => {
+        const characterName = document.getElementById('characterNameInput').value;
+        
+        if (characterName) {
+            const data = await getApiCharacter(apiCharacters);
+            console.log(data);
+            displayCharacterDetails(data, characterName);
+        } else {
+            alert('Por favor, digite um nome de personagem.');
+        }
+    })
+};
 
-document.getElementById('searchButton').addEventListener('click', async () => {
-    const characterName = document.getElementById('characterNameInput').value;
-    if (characterName) {
-        const data = await getApiCharacter(apiCharacters);
-        console.log(data);
-        displayCharacterDetails(data, characterName);
-    } else {
-        alert('Por favor, digite um nome de personagem.');
-    }
-});
+
 
 
 

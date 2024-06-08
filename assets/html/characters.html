@@ -19,6 +19,14 @@
                         width="140px" height="60px"
                         alt="Logo Harry Potter"></a>
             </div>
+
+            <div class="card-container-informations">
+                <b>
+                    <button type="submit">Adicionar</button>
+                    <button type="submit">Alterar</button>
+                    <button type="submit">Excluir</button>
+                </b>
+            </div>
             <b>
                 <div>
                     <a href="/assets/html/characters.html">Characters</a>
@@ -31,16 +39,10 @@
             <div class="card-container-character">
                 <img src="/assets/img/characters-icon.png"
                     alt="Imagem dos Personagens">
-                <div class="card-container-informations">
-                    <b>
-                        <button type="submit">Adicionar</button>
-                        <button type="submit">Alterar</button>
-                        <button type="submit">Excluir</button>
-                    </b>
-                </div>
+               
                 <div>
                     <input type="text" id="characterNameInput" placeholder="Digite o nome do personagem">
-                    <button id="searchButton">Buscar</button>
+                    <button id="searchButton" onclick="teste()">Buscar</button>
                 </div>
                 <div class="character-details"></div>
             </div>
