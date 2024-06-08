@@ -5,13 +5,21 @@
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
+body {
+  height: 100%;
+  margin: 0;
+  background-image: url("/assets/img/Background-one.jfif");
+  background-repeat: repeat;
+  background-size: contain;
+}
+
 .heading {
   display: flex;
   align-items: center;
   justify-content: space-around;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 80px;
+  height: 150px;
 }
 
 .heading a {
@@ -22,15 +30,14 @@
 }
 
 .heading img {
-  margin-right: 600px;
+  margin-right: 300px;
 }
 
-body {
-  height: 100%;
-  margin: 0;
-  background-image: url("/assets/img/Background-one.jfif");
-  background-repeat: repeat;
-  background-size: contain;
+
+
+#characterNameInput{
+ 
+  margin-left: 0px;
 }
 
 main {
@@ -41,6 +48,10 @@ main {
   overflow: auto;
   min-height: calc(100vh - 240px);
   /*Faz com que o footer fique no final da pagina */
+}
+
+.main-div{
+  display: flex;
 }
 
 .container-main {

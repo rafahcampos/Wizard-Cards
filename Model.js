@@ -362,3 +362,154 @@ const editCard = (event) =>{
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry Potter Characters</title>
+    <style>
+        .character-details {
+            margin-top: 20px;
+        }
+        .card-container-character {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .card-container-character img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        .autocomplete-suggestions {
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            background-color: white;
+            z-index: 1000;
+        }
+        .autocomplete-suggestion {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .autocomplete-suggestion:hover {
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Buscar Personagem de Harry Potter</h1>
+    <input type="text" id="characterNameInput" placeholder="Digite o nome do personagem">
+    <div id="autocompleteSuggestions" class="autocomplete-suggestions"></div>
+    <button id="searchButton">Buscar</button>
+    <div class="character-details"></div>
+
+    <script>
+        const apiCharacters = "https://hp-api.herokuapp.com/api/characters";
+        let charactersData = [];
+
+        async function getApiCharacter(api) {
+            try {
+                const response = await fetch(api);
+                if (!response.ok) {
+                    throw new Error(`Erro! Status da resposta: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Erro fetch ou Json", error);
+            }
+        }
+
+        function displayCharacterDetails(data, characterName) {
+            const containerCharacterDetails = document.querySelector(".character-details");
+            const character = data.find(
+                (item) => item.name.toLowerCase() === characterName.toLowerCase()
+            );
+
+            if (character) {
+                containerCharacterDetails.innerHTML += `
+                    <div class="card-container-character">
+                        <img src="${character.image}" alt="Imagem dos Personagens">
+                        <div>
+                            <p>Nome: ${character.name}</p>
+                            <p>Espécie: ${character.species}</p>
+                            <p>Casa: ${character.house}</p>
+                            <p>Ancestralidade: ${character.ancestry}</p>
+                        </div>
+                    </div>`;
+            } else {
+                containerCharacterDetails.innerHTML += `<p>Personagem não encontrado</p>`;
+            }
+        }
+
+        function createCharacterCard() {
+            document.getElementById("searchButton").addEventListener("click", async () => {
+                const characterName = document.getElementById("characterNameInput").value.trim();
+
+                if (characterName) {
+                    displayCharacterDetails(charactersData, characterName);
+                } else {
+                    alert("Por favor, digite um nome de personagem.");
+                }
+            });
+        }
+
+        function setupAutocomplete(inputElement, suggestionsElement, data) {
+            inputElement.addEventListener("input", () => {
+                const query = inputElement.value.toLowerCase().trim();
+                suggestionsElement.innerHTML = '';
+
+                if (query) {
+                    const filteredSuggestions = data.filter(character => 
+                        character.name.toLowerCase().includes(query)
+                    );
+
+                    filteredSuggestions.forEach(character => {
+                        const suggestionElement = document.createElement("div");
+                        suggestionElement.className = "autocomplete-suggestion";
+                        suggestionElement.textContent = character.name;
+                        suggestionsElement.appendChild(suggestionElement);
+
+                        suggestionElement.addEventListener("click", () => {
+                            inputElement.value = character.name;
+                            suggestionsElement.innerHTML = '';
+                        });
+                    });
+                }
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!suggestionsElement.contains(e.target) && e.target !== inputElement) {
+                    suggestionsElement.innerHTML = '';
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            charactersData = await getApiCharacter(apiCharacters);
+            createCharacterCard();
+            setupAutocomplete(
+                document.getElementById("characterNameInput"), 
+                document.getElementById("autocompleteSuggestions"), 
+                charactersData
+            );
+        });
+    </script>
+</body>
+</html>

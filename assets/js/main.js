@@ -1,71 +1,115 @@
 //https://hp-api.herokuapp.com/
-const apiCharacters = ("https://hp-api.herokuapp.com/api/characters");
+const apiCharacters = "https://hp-api.herokuapp.com/api/characters";
 //const apiSpells = ("https://hp-api.herokuapp.com/api/spells");
+let charactersData = [];
 
 async function getApiCharacter(api) {
-    try {
-        //Realizando a requisição para a API
-        const response = await fetch(api);
+  try {
+    //Realizando a requisição para a API
+    const response = await fetch(api);
 
-        //Verifica o status da requisição
-        if (!response.ok) {
-            throw new Error(`Erro! Status da resposta: ${response.status}`);
-        }
-
-        //Convertendo para JSON
-        const data = await response.json();
-
-        //Printando os dados
-        console.log(data);
-
-        //retorna os dados para uso futuro
-        return data;
-    } catch (error) {
-        // Trata os possiveis erros durante o fetch ou a conversão em JSON
-        console.error('Erro fetch ou Json', error);
+    //Verifica o status da requisição
+    if (!response.ok) {
+      throw new Error(`Erro! Status da resposta: ${response.status}`);
     }
-};
+
+    //Convertendo para JSON
+    const data = await response.json();
+
+    //Printando os dados
+    // console.log(data);
+
+    //retorna os dados para uso futuro
+    return data;
+  } catch (error) {
+    // Trata os possiveis erros durante o fetch ou a conversão em JSON
+    console.error("Erro fetch ou Json", error);
+  }
+}
 
 //Exibir os dados na página HTML
 function displayCharacterDetails(data, characterName) {
-    const containerCharacterDetails = document.querySelector('.character-details');
+  const containerCharacterDetails =
+    document.querySelector(".character-details");
 
-    const character = data.find(item => item.name.toLowerCase() === characterName.toLowerCase());
+  const character = data.find(
+    (item) => item.name.toLowerCase() === characterName.toLowerCase() //verifica se encontrado
+  );
 
+  if (character) {
+    containerCharacterDetails.innerHTML += `
+         
+          
 
-    if (character) {
+     <div class="card-container-character">
+         <img src="${character.image}" alt="Imagem dos Personagens">
+           <div>
+             <p>Nome: ${character.name}</p>
+             <p>Espécie: ${character.species}</p>
+                <p>Casa: ${character.house}</p>
+                 <p>Ancestralidade: ${character.ancestry}</p>
+         </div>
+     </div>`;
 
-
-        const html = `
-        <div>
-            <p>Nome: ${character.name}</p>
-            <p>Casa: ${character.species}</p>
-            <p>Casa: ${character.house}</p>
-            <p>Ancestralidade: ${character.ancestry}</p>
-        </div> `;
-
-        //Insetir o html na div especifica
-        containerCharacterDetails.innerHTML = html;
-    } else {
-        containerCharacterDetails.innerHTML = `<p>Personagem não encontrado</p>`
-    }
+    //Insetir o html na div especifica
+  } else {
+    containerCharacterDetails.innerHTML += `<p>Personagem não encontrado</p>`;
+  }
 }
 
-function teste(){
-    document.getElementById('searchButton').addEventListener('click', async () => {
-        const characterName = document.getElementById('characterNameInput').value;
-        
-        if (characterName) {
-            const data = await getApiCharacter(apiCharacters);
-            console.log(data);
-            displayCharacterDetails(data, characterName);
-        } else {
-            alert('Por favor, digite um nome de personagem.');
-        }
-    })
-};
+function createCharacterCard() {
+  document
+    .getElementById("searchButton")
+    .addEventListener("click", async () => {
+      const characterName = document
+        .getElementById("characterNameInput")
+        .value.trim();
 
+      if (characterName) {
+        displayCharacterDetails(charactersData, characterName);
+      } else {
+        alert("Por favor, digite um nome de personagem.");
+      }
+    });
+}
 
+function setupAutocomplete(inputElement, suggestionsElement, data) {
+  inputElement.addEventListener("input", () => {
+    const query = inputElement.value.toLowerCase().trim();
+    suggestionsElement.innerHTML = "";
 
+    if (query) {
+      const filteredSuggestions  = data.filter(character =>
+        character.name.toLowerCase().includes(query)
+      );
 
+      filteredSuggestions.forEach(character => {
+        const suggestionElement = document.createElement("div");
+        suggestionElement.className = "autocomplete-suggestion";
+        suggestionElement.textContent = character.name;
+        suggestionsElement.appendChild(suggestionElement);
 
+        suggestionElement.addEventListener("click", () => {
+          inputElement.value = character.name;
+          suggestionsElement.innerHTML = "";
+        });
+    });
+}
+});
+
+  document.addEventListener("click", (e) => {
+    if (!suggestionsElement.contains(e.target) && e.target !== inputElement) {
+      suggestionsElement.innerHTML = "";
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  charactersData = await getApiCharacter(apiCharacters);
+  createCharacterCard();
+  setupAutocomplete(
+    document.getElementById("characterNameInput"),
+    document.getElementById("autocompleteSuggestions"),
+    charactersData
+  );
+});
