@@ -19,13 +19,18 @@
                         alt="Logo Harry Potter"></a>
             </div>
             <div class="card-container-informations">
-                <b>
-                    <button type="submit">Adicionar Character</button>
-                    <button type="submit">Alterar Character</button>
-                    <button type="submit">Excluir Character</button>
-                    <button type="submit">Gerar Automaticamente</button>
+                
+                    <button id="openModalButton">Adicionar
+                        Character</button>
 
-                </b>
+                    <div id="modal" class="modal">
+
+                    <div id="modal-content" class="modal-content">
+                        <span class="close"&times;></span>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aliquid qui assumenda et, exercitationem temporibus quidem? Recusandae ratione, placeat eum numquam sit, repellendus eaque iusto earum eveniet cupiditate minus inventore.</p>
+                    </div>
+
+                </div>
             </div>
             <div>
                 <input type="text" id="characterNameInput"
@@ -43,8 +48,33 @@
             </div>
         </header>
         <main class="main-character-container">
-
             <div class="character-details"></div>
+
+            <b>
+                <div class="card-container-character">
+                    <img src="${character.image}"
+                        alt="Imagem dos Personagens">
+                    <div class="card-container-informations">
+                        <b>
+                            <div>
+                                <p>Nome: ${character.name}</p>
+                                <p>Espécie: ${character.species}</p>
+
+                                <p>Casa: ${character.house}</p>
+                                <p>Ancestralidade: ${character.ancestry}</p>
+                                <div class="button-submit">
+                                    <button type="submit">Alterar
+                                        Character</button>
+                                </div>
+                                <div class="button-submit">
+                                    <button type="submit">Excluir
+                                        Character</button>
+                                </div>
+                            </div>
+                        </b>
+                    </div>
+                </div>
+            </b>
 
         </main>
         <footer>

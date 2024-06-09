@@ -33,8 +33,6 @@ body {
   margin-right: 300px;
 }
 
-
-
 #characterNameInput{
  
   margin-left: 0px;
@@ -66,10 +64,75 @@ main {
   margin-top: 40px;
 }
 
+/*Botão de Buscas*/
+.character-details{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.autocomplete-suggestions{
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  position: absolute;
+  background-color: white;
+  z-index: 1000;
+}
+
+.autocomplete-suggestion{
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-suggestion:hover{
+  background-color: #e9e9e9;
+}
+
+/*Modal*/
+
+.modal {
+  display: none; /*Inicialmente oculto*/
+  position: fixed; /*fixa o modal na tela*/
+  z-index: 1; /*Fica em cima dos outros elementos*/
+ 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
 /*Character-page -------------------------------------------------*/
 
 .main-character-container {
-  display: flex;
+  display:flex;
   justify-content: initial;
   align-items: center;
   flex-wrap: wrap;
@@ -91,7 +154,7 @@ main {
   align-items: center;
   justify-content: center;
   width: 350px;
-  height: 500px;
+  height: 550px;
   background: rgba(96, 96, 236, 0.7);
   border: solid 8px rgba(255, 211, 130, 0.7);
   border-radius: 32px;
@@ -103,7 +166,7 @@ main {
   justify-content: flex-start;
   width: 320px;
   height: 280px;
-  margin-bottom: 120px;
+ 
   background-color: brown;
   border: solid 4px rgba(255, 211, 130, 0.7);
   border-radius: 32px;
@@ -111,12 +174,30 @@ main {
 .card-container-informations {
      display: flex;
      justify-content: space-between;
+     flex-direction: row;
+     margin: 0 0 10px 10px ;
+}
+.card-container-informations div{
+  margin: 0 0 5px 20px;
+  padding: 5px;
+}
+
+.button-submit{
+  display: inline-block;
+ 
+
 }
 .card-container-informations button {
-    font-size: 24px;
+  margin-top: 5px;
+    margin-left: 14px;
+    font-size: 16px;
     color: black;
-    margin: 0 0.5em 0  ;
+    background:gray;
+    padding: 5px;
+    width: 200px;
     cursor: pointer;
+    border: solid 5px black;
+    border-radius: 40px;
 
   }
                        

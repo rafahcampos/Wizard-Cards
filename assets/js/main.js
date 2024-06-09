@@ -1,7 +1,6 @@
 //https://hp-api.herokuapp.com/
 const apiCharacters = "https://hp-api.herokuapp.com/api/characters";
 //const apiSpells = ("https://hp-api.herokuapp.com/api/spells");
-let charactersData = [];
 
 async function getApiCharacter(api) {
   try {
@@ -38,18 +37,31 @@ function displayCharacterDetails(data, characterName) {
 
   if (character) {
     containerCharacterDetails.innerHTML += `
-         
-          
+          <b>
+                    <div class="card-container-character">
+                        <img src="${character.image}"
+                            alt="Imagem dos Personagens">
+                        <div class="card-container-informations">
+                            <b>
+                                <div>
+                                    <p>Nome: ${character.name}</p>
+                                    <p>Espécie: ${character.species}</p>
 
-     <div class="card-container-character">
-         <img src="${character.image}" alt="Imagem dos Personagens">
-           <div>
-             <p>Nome: ${character.name}</p>
-             <p>Espécie: ${character.species}</p>
-                <p>Casa: ${character.house}</p>
-                 <p>Ancestralidade: ${character.ancestry}</p>
-         </div>
-     </div>`;
+                                    <p>Casa: ${character.house}</p>
+                                    <p>Ancestralidade: ${character.ancestry}</p>
+                                    <div  class="button-submit" >
+                                        <button type="submit">Alterar
+                                            Character</button>
+                                        </div>
+                                        <div class="button-submit">
+                                        <button  type="submit">Excluir
+                                            Character</button>
+                                    </div>
+                                </div>
+                            </b>
+                        </div>
+                    </div>
+                </b>`;
 
     //Insetir o html na div especifica
   } else {
@@ -79,11 +91,11 @@ function setupAutocomplete(inputElement, suggestionsElement, data) {
     suggestionsElement.innerHTML = "";
 
     if (query) {
-      const filteredSuggestions  = data.filter(character =>
+      const filteredSuggestions = data.filter((character) =>
         character.name.toLowerCase().includes(query)
       );
 
-      filteredSuggestions.forEach(character => {
+      filteredSuggestions.forEach((character) => {
         const suggestionElement = document.createElement("div");
         suggestionElement.className = "autocomplete-suggestion";
         suggestionElement.textContent = character.name;
@@ -93,9 +105,9 @@ function setupAutocomplete(inputElement, suggestionsElement, data) {
           inputElement.value = character.name;
           suggestionsElement.innerHTML = "";
         });
-    });
-}
-});
+      });
+    }
+  });
 
   document.addEventListener("click", (e) => {
     if (!suggestionsElement.contains(e.target) && e.target !== inputElement) {
@@ -112,4 +124,33 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("autocompleteSuggestions"),
     charactersData
   );
+});
+
+//------------------------------------------------------------------------//
+//MODAL
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("modal");
+
+  const openModalButton = document.getElementById("openModalButton");
+
+  const closeModalButton = modal.querySelector(".close");
+
+  function openModal() {
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  openModalButton.addEventListener("click", openModal);
+
+  closeModalButton.addEventListener("click", closeModal);
+
+  window.addEventListener("click", (event) => {
+    if (event.target == modal) {
+      closeModal();
+    }
+  });
 });
