@@ -19,7 +19,7 @@ body {
   justify-content: space-around;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 150px;
+  height: 180px;
 }
 
 .heading a {
@@ -28,17 +28,6 @@ body {
   font-size: 24px;
   padding: 30px;
   width: 100px;
-}
-
-
-
-.heading img {
-  margin-right: 300px;
-}
-
-#characterNameInput{
- 
-  margin-left: 0px;
 }
 
 main {
@@ -193,6 +182,7 @@ font-weight: bold;
 
 .button-submit{
   display: inline-block;
+  
  
 
 }
@@ -209,10 +199,20 @@ font-weight: bold;
     border-radius: 40px;
 
   }
+
+  .criar-personagem{
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    align-items: center;
+   
+  }
+  
                        
 #autocompleteSuggestions{
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(125, 154, 217, 0.79);
   color: black;
+  font-weight: 700;
   width: 300px;
   border: solid 4px white;
   overflow: auto;
@@ -221,8 +221,16 @@ font-weight: bold;
  
 }
 
+#characterNameInput{
+  font-weight: 500;
+  width: 200px;
+  height: 30px;
+}
+
+
+
 #autocompleteSuggestions:hover{
-  background-color: red;
+  background: rgba(47, 105, 230, 0.79);
   
 }
 
@@ -232,17 +240,8 @@ font-weight: bold;
 }
 
 
-#searchButton{
-  margin-top: 50px;
-  margin-right: 400px;
-}
 
-.criar-personagem{
-  display: flex;
-  justify-content: initial;
-  align-items: center;
-  background: red;
-}
+
 
 /*----------------------------------------------------------------------*/
 
