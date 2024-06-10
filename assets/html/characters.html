@@ -19,67 +19,75 @@
                         alt="Logo Harry Potter"></a>
             </div>
             <div class="card-container-informations">
-                
-                    <button id="openModalButton">Adicionar
-                        Character</button>
-
-                    <div id="modal" class="modal">
-
-                    <div id="modal-content" class="modal-content">
-                        <span class="close"&times;></span>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia aliquid qui assumenda et, exercitationem temporibus quidem? Recusandae ratione, placeat eum numquam sit, repellendus eaque iusto earum eveniet cupiditate minus inventore.</p>
+                <div id="addModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Add New Character</h2>
+                        <form id="addCharacterForm">
+                            <label for="addName">Name:</label>
+                            <input type="text" id="addName" name="name"><br><br>
+                            <label for="addSpecies">Species:</label>
+                            <input type="text" id="addSpecies"
+                                name="species"><br><br>
+                            <label for="addHouse">House:</label>
+                            <input type="text" id="addHouse"
+                                name="house"><br><br>
+                            <label for="addAncestry">Ancestry:</label>
+                            <input type="text" id="addAncestry"
+                                name="ancestry"><br><br>
+                            <button type="submit">Adicionar Personagem</button>
+                        </form>
                     </div>
-
                 </div>
-            </div>
-            <div>
-                <input type="text" id="characterNameInput"
-                    placeholder="Digite o nome do personagem">
-                <div id="autocompleteSuggestions"
-                    class="autocomplete-suggestions"></div>
-                <button id="searchButton">Buscar</button>
-            </div>
-            <b>
+
                 <div>
-                    <a href="/assets/html/characters.html">Characters</a>
-                    <a href="/assets/img/spells-icon.png">Spells</a>
-                    <a href="#">Build</a>
-                </b>
-            </div>
-        </header>
-        <main class="main-character-container">
-            <div class="character-details"></div>
+                    <input type="text" id="characterNameInput"
+                        placeholder="Digite o nome de um personagem">
+                    <button id="searchButton">Buscar</button>
+                    <button id="addCharacterButton">Adicionar
+                        Personagem</button>
+                    <div id="autocompleteSuggestions"></div>
+                </div>
+                <b>
+                    <div>
+                        <a href="/assets/html/characters.html">Characters</a>
+                        <a href="/assets/html/spells.html">Spells</a>
+                        <a href="#">Build</a>
+                    </b>
+                </div>
+            </header>
+            <main class="main-character-container">
+                <div class="character-details"></div>
 
-            <b>
-                <div class="card-container-character">
-                    <img src="${character.image}"
-                        alt="Imagem dos Personagens">
-                    <div class="card-container-informations">
-                        <b>
-                            <div>
-                                <p>Nome: ${character.name}</p>
-                                <p>Espécie: ${character.species}</p>
-
-                                <p>Casa: ${character.house}</p>
-                                <p>Ancestralidade: ${character.ancestry}</p>
-                                <div class="button-submit">
-                                    <button type="submit">Alterar
-                                        Character</button>
-                                </div>
-                                <div class="button-submit">
-                                    <button type="submit">Excluir
-                                        Character</button>
-                                </div>
-                            </div>
-                        </b>
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Edit Character</h2>
+                        <form id="editCharacterForm">
+                            <label for="editName">Name:</label>
+                            <input type="text" id="editName"
+                                name="name"><br><br>
+                            <label for="editSpecies">Species:</label>
+                            <input type="text" id="editSpecies"
+                                name="species"><br><br>
+                            <label for="editHouse">House:</label>
+                            <input type="text" id="editHouse"
+                                name="house"><br><br>
+                            <label for="editAncestry">Ancestry:</label>
+                            <input type="text" id="editAncestry"
+                                name="ancestry"><br><br>
+                            <button type="submit">Salvar Mudanças</button>
+                        </form>
                     </div>
                 </div>
-            </b>
 
-        </main>
-        <footer>
-            <p>@ 2024 Campos | Blue Florest </p>
-        </footer>
-        <script src="/assets/js/main.js"></script>
-    </body>
-</html>
+            </main>
+            <footer>
+                <p>@ 2024 Campos | Blue Florest </p>
+            </footer>
+            <script src="/assets/js/main.js"></script>
+        </body>
+
+    </html>
+
+    
