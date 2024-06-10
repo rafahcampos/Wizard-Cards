@@ -1,39 +1,25 @@
-//https://hp-api.herokuapp.com/
 const apiCharacters = "https://hp-api.herokuapp.com/api/characters";
-//const apiSpells = ("https://hp-api.herokuapp.com/api/spells");
 let charactersData = [];
-let cardIdCounter = 0; //contador que garante que cada card terá um id único
+let cardIdCounter = 0;
 
 async function getApiCharacter(api) {
   try {
-    //Realizando a requisição para a API
     const response = await fetch(api);
-    //Verifica o status da requisição
     if (!response.ok) {
       throw new Error(`Erro! Status da resposta: ${response.status}`);
     }
-    //Convertendo para JSON
     const data = await response.json();
-    //Printando os dados
-
-    //retorna os dados para uso futuro
     return data;
   } catch (error) {
-    // Trata os possiveis erros durante o fetch ou a conversão em JSON
     console.error("Erro fetch ou Json", error);
   }
 }
 
-//Exibir os dados na página HTML
 function displayCharacterDetails(character) {
   const containerCharacterDetails = document.querySelector(".character-details");
   const cardId = `card-${cardIdCounter}`;
-
-  console.log(cardId);
   
-    
   const cardHtml = `
-    
     <div class="card-container-character" data-id="${cardId}">
         <img src="${character.image}" alt="Imagem dos Personagens">
         <div class="card-container-informations">
@@ -43,43 +29,37 @@ function displayCharacterDetails(character) {
                 <p>Casa: ${character.house}</p>
                 <p>Ancestralidade: ${character.ancestry}</p>
                 <div class="button-submit">
-                    <button type="button" class="edit-button"
-                        data-id="${cardId}">
-                        Alterar Character</button>
+                    <button type="button" class="edit-button" data-id="${cardId}">Alterar Character</button>
                 </div>
                 <div class="button-submit">
-                    <button type="button" class="delete-button"
-                        data-id="${cardId}">
-                        Excluir Character</button>
+                    <button type="button" class="delete-button" data-id="${cardId}">Excluir Character</button>
                 </div>
             </div>
         </div>
     </div>`;
 
-    
-    containerCharacterDetails.insertAdjacentHTML('beforeend', cardHtml);
- 
+  containerCharacterDetails.insertAdjacentHTML('beforeend', cardHtml);
 
-    document.querySelector(`.edit-button[data-id="${cardId}"]`).addEventListener('click', openEditModal);
-    document.querySelector(`.delete-button[data-id="${cardId}"]`).addEventListener('click', deleteCharacterCard);
+  document.querySelector(`.edit-button[data-id="${cardId}"]`).addEventListener('click', openEditModal);
+  document.querySelector(`.delete-button[data-id="${cardId}"]`).addEventListener('click', deleteCharacterCard);
 
-    cardIdCounter ++;
-};
+  cardIdCounter++;
+}
 
 function createCharacterCard() {
   document.getElementById("searchButton").addEventListener("click", async () => {
-      const characterName = document.getElementById("characterNameInput").value.trim();
-      if (characterName) {
-          const characters = charactersData.filter(item => item.name.toLowerCase() === characterName.toLowerCase());
-          if (characters.length >= 0) {
-              
-              characters.forEach(character => displayCharacterDetails(character));
-          } else {
-              alert("Personagem não encontrado.");
-          }
+    const characterName = document.getElementById("characterNameInput").value.trim();
+    if (characterName) {
+      const characters = charactersData.filter(item => item.name.toLowerCase() === characterName.toLowerCase());
+      if (characters.length > 0) {
+        document.querySelector(".character-details").innerHTML = ""; // Clear previous results
+        characters.forEach(character => displayCharacterDetails(character));
       } else {
-          alert("Por favor, digite um nome de personagem.");
+        alert("Personagem não encontrado.");
       }
+    } else {
+      alert("Por favor, digite um nome de personagem.");
+    }
   });
 }
 
@@ -90,11 +70,12 @@ function setupAutocomplete(inputElement, suggestionsElement, data) {
 
     if (query) {
       const filteredSuggestions = data.filter(character =>
-        character.name.toLowerCase().includes(query));
+        character.name.toLowerCase().includes(query)
+      );
 
       filteredSuggestions.forEach(character => {
         const suggestionElement = document.createElement("div");
-        suggestionElement.className = "autocomplete-suggestion"; //sugestões da lista suspensa
+        suggestionElement.className = "autocomplete-suggestion";
         suggestionElement.textContent = character.name;
         suggestionsElement.appendChild(suggestionElement);
         suggestionElement.addEventListener("click", () => {
@@ -112,9 +93,6 @@ function setupAutocomplete(inputElement, suggestionsElement, data) {
   });
 }
 
-//------------------------------------------------------------------------//
-//MODAL
-
 function openEditModal(event) {
   const id = event.target.dataset.id;
   const card = document.querySelector(`.card-container-character[data-id="${id}"]`);
@@ -122,16 +100,16 @@ function openEditModal(event) {
   const character = charactersData.find(item => item.name === characterName);
 
   if (character) {
-      document.getElementById('editName').value = character.name;
-      document.getElementById('editSpecies').value = character.species;
-      document.getElementById('editHouse').value = character.house;
-      document.getElementById('editAncestry').value = character.ancestry;
-      document.getElementById('editModal').style.display = 'block';
+    document.getElementById('editName').value = character.name;
+    document.getElementById('editSpecies').value = character.species;
+    document.getElementById('editHouse').value = character.house;
+    document.getElementById('editAncestry').value = character.ancestry;
+    document.getElementById('editModal').style.display = 'block';
 
-      document.getElementById('editCharacterForm').onsubmit = function (e) {
-          e.preventDefault();
-          saveCharacterChanges(character, id);
-      };
+    document.getElementById('editCharacterForm').onsubmit = function (e) {
+      e.preventDefault();
+      saveCharacterChanges(character, id);
+    };
   }
 }
 
@@ -144,23 +122,21 @@ function saveCharacterChanges(character, id) {
   const card = document.querySelector(`.card-container-character[data-id="${id}"]`);
 
   card.querySelector(".card-container-informations").innerHTML = `
-   <div class="character-information-style">
-        <p>Nome: ${character.name}</p>
-        <p>Espécie: ${character.species}</p>
-        <p>Casa: ${character.house}</p>
-        <p>Ancestralidade: ${character.ancestry}</p>
-       <div class="button-submit">
-         <button type="button" class="edit-button" data-id="${id}">Alterar Character</button>
-             </div>
-        <div class="button-submit">
-              <button type="button" class="delete-button" data-id="${id}">Excluir Character</button>
-       </div>
-
+    <div class="character-information-style">
+      <p>Nome: ${character.name}</p>
+      <p>Espécie: ${character.species}</p>
+      <p>Casa: ${character.house}</p>
+      <p>Ancestralidade: ${character.ancestry}</p>
+      <div class="button-submit">
+        <button type="button" class="edit-button" data-id="${id}">Alterar Character</button>
+      </div>
+      <div class="button-submit">
+        <button type="button" class="delete-button" data-id="${id}">Excluir Character</button>
+      </div>
     </div>`;
 
   document.getElementById("editModal").style.display = "none";
 
-  //Após a alteração, redireciona os cliques para os novos botões (acima)
   card.querySelector('.edit-button').addEventListener('click', openEditModal);
   card.querySelector('.delete-button').addEventListener('click', deleteCharacterCard);
 }
@@ -183,7 +159,7 @@ function addNewCharacter(event) {
     species: document.getElementById("addSpecies").value,
     house: document.getElementById("addHouse").value,
     ancestry: document.getElementById("addAncestry").value,
-    image: "https://via.placeholder.com/150", //Imagem do placeholder
+    image: "https://via.placeholder.com/150",
   };
   charactersData.push(newCharacter);
   displayCharacterDetails(newCharacter);
@@ -218,3 +194,4 @@ window.onclick = function (event) {
     document.getElementById('addModal').style.display = 'none';
   }
 };
+

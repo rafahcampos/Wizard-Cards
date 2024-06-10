@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="/assets/css/style.css">
 
     </head>
-
     <body>
         <header class="heading">
             <div>
@@ -40,13 +39,15 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="criar-personagem">
                     <input type="text" id="characterNameInput"
-                        placeholder="Digite o nome de um personagem">
-                    <button id="searchButton">Buscar</button>
-                    <button id="addCharacterButton">Adicionar
+                        placeholder="Digite o nome de um personagem" autocomplete="off">
+                        <div id="autocompleteSuggestions"></div>
+                    <button id="searchButton">Incluir Personagem</button>
+                    
+                    <button id="addCharacterButton">Criar
                         Personagem</button>
-                    <div id="autocompleteSuggestions"></div>
+                    
                 </div>
                 <b>
                     <div>
