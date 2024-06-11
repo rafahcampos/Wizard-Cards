@@ -24,8 +24,6 @@ nav div a img{
   
 }
 
-
-
 .heading {
   display: flex;
   align-items: center;
@@ -39,9 +37,8 @@ nav div a img{
   display: flex;
   flex-direction: row;
   width: 390px;
-
-
 }
+
 .heading a {
   
   text-decoration: none;
@@ -102,7 +99,6 @@ main {
   background-color: #e9e9e9;
 }
 
-
 .modal {
   /*display: none; Inicialmente oculto*/
    /*fixa o modal na tela*/
@@ -127,7 +123,6 @@ main {
   border: 1px solid #888;
   border-radius: 15px;
   width: 300px;
-  
 }
 
 .close {
@@ -143,8 +138,6 @@ font-weight: bold;
   text-decoration: none;
   cursor: pointer;
 }
-
-
 
 /*Character-page -------------------------------------------------*/
 
@@ -177,21 +170,21 @@ font-weight: bold;
   border-radius: 32px;
   margin: 30px 0 0px 30px;
 }
+
 .card-container-character img {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 320px;
   height: 280px;
- 
-  background-color: brown;
+  background: rgba(47, 105, 230, 0.4);
   border: solid 4px rgba(255, 211, 130, 0.7);
   border-radius: 32px;
 }
+
 .character-information-style{
   font-weight: 700;
   font-size: 18px;
-
   padding: 45px;
 
 }
@@ -201,18 +194,15 @@ font-weight: bold;
      flex-direction: row;
      margin: 0 0 10px 10px ;
 }
+
 .card-container-informations div{
-  margin: 0 0px 5px 0px;
-  
-  
+  margin: 0 0px 5px 0px; 
 }
 
 .button-submit{
   display: inline-block;
-  
- 
-
 }
+
 .card-container-informations button {
   margin-top: 5px;
     margin-left: 14px;
@@ -224,7 +214,6 @@ font-weight: bold;
     cursor: pointer;
     border: solid 5px black;
     border-radius: 40px;
-
   }
 
   .criar-personagem{
@@ -234,8 +223,7 @@ font-weight: bold;
     align-items: center;
    
   }
-  
-                       
+                  
 #autocompleteSuggestions{
  
   background: rgba(125, 154, 217, 0.79);
@@ -256,13 +244,9 @@ font-weight: bold;
   width: 250px;
   height: 30px;
   background: rgba(47, 105, 230, 0.59);
-  
-
-  font-size: 12px;
+  font-size: 20px;
   color: black;
-  
   padding: 5px;
- 
   cursor: pointer;
   border: solid 5px black;
   border-radius: 20px;
@@ -272,17 +256,17 @@ font-weight: bold;
   color: black;
   font-weight: 600;
   font-size: 16px;
-  
-
 }
 
 #searchButton{
-  margin-left: 35px;
+  margin-left: 15px;
+  background: rgba(47, 105, 230, 0.59);
 }
 
 #addCharacterButton{
   margin-left: 150px;
   height: 50px;
+  background: rgba(47, 105, 230, 0.59);
 }
 
 #autocompleteSuggestions:hover{
@@ -294,10 +278,6 @@ font-weight: bold;
   background-color: black;
   
 }
-
-
-
-
 
 /*----------------------------------------------------------------------*/
 
@@ -316,7 +296,6 @@ footer p {
   font-size: 24px;
   padding: 30px;
 }
-
 
 /*----------------------------------------------------------------------*/
 
@@ -361,15 +340,6 @@ footer p {
 	margin: 20px 0 0 0;
 }
 
-#editCharacterForm{
-  margin: 20px 0 0 0;
-  width: 300px;
-	background: #141414;
-	border-radius: 15px;
-	padding: 20px;
-	color: #ffffff;
- 
-}
 #editCharacterForm input{
   border-radius: 10px;
   height: 20px;
@@ -385,13 +355,12 @@ footer p {
   margin-left: 50px;
   font-size: 16px;
   color: black;
-  background: rgba(47, 142, 230, 0.253);
+  background: rgba(47, 105, 230, 0.4);
   padding: 5px;
   width: 200px;
   cursor: pointer;
   border: solid 5px black;
   border-radius: 40px;
-
 }
 
 #addCharacterForm{
@@ -421,6 +390,5 @@ footer p {
   cursor: pointer;
   border: solid 5px black;
   border-radius: 40px;
-
 }
 

@@ -27,6 +27,16 @@ async function getApiCharacter(api) {
 //Exibir os dados na página HTML
 function displayCharacterDetails(character) {
   const containerCharacterDetails = document.querySelector(".character-details");
+
+  const existingCard = Array.from(containerCharacterDetails.children).find(
+    card => card.querySelector('p:nth-child(1)').innerText.split(': ')[1] === character.name
+  );
+
+  if (existingCard) {
+    alert("Este personagem já foi adicionado.");
+    return;
+  }
+
   const cardId = `card-${cardIdCounter}`;
 
   console.log(cardId);
@@ -35,7 +45,7 @@ function displayCharacterDetails(character) {
   const cardHtml = `
     
     <div class="card-container-character" data-id="${cardId}">
-        <img src="${character.image ?  character.image : 'https://via.placeholder.com/150'}" alt="Imagem dos Personagens">
+        <img src="${character.image ?  character.image : '/assets/img/characters-icon.png'}" alt="Imagem dos Personagens">
         <div class="card-container-informations">
             <div class="character-information-style">
                 <p>Nome: ${character.name }</p>
@@ -71,6 +81,9 @@ function createCharacterCard() {
       const characterName = document.getElementById("characterNameInput").value.trim();
       if (characterName) {
           const characters = charactersData.filter(item => item.name.toLowerCase() === characterName.toLowerCase());
+
+   
+
           if (characters.length >= 0) {
               
               characters.forEach(character => displayCharacterDetails(character));
@@ -82,7 +95,7 @@ function createCharacterCard() {
       }
   });
 }
-
+ 
 function setupAutocomplete(inputElement, suggestionsElement, data) {
   inputElement.addEventListener("input", () => {
     
@@ -190,7 +203,7 @@ function addNewCharacter(event) {
     species: document.getElementById("addSpecies").value,
     house: document.getElementById("addHouse").value,
     ancestry: document.getElementById("addAncestry").value,
-    image: "https://via.placeholder.com/150", //Imagem do placeholder
+    image: "/assets/img/characters-icon.png", //Imagem do placeholder
   };
   charactersData.push(newCharacter);
   displayCharacterDetails(newCharacter);
