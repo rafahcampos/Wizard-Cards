@@ -323,7 +323,8 @@ footer p {
 /*MODAL - ESTILIZAÇÃO*/
 
 .modal {
-	position: absolute;
+  display: none;
+	position: fixed;
   width: 100%;
   height: 100%;
 	background: #000000e1;
@@ -336,7 +337,7 @@ footer p {
 	align-items: center;
 }
 
-.modal main{
+.modal-content{
 	width: 300px;
 	background: #141414;
 	border-radius: 15px;
@@ -344,8 +345,10 @@ footer p {
 	color: #ffffff;
 }
 
-.modal main h2{
+.modal-content h2{
 	margin: 0;
+  font-size: 28px;
+  padding: 20pxpx;
 }
 
 .modal main form{
@@ -357,3 +360,67 @@ footer p {
 .modal main form button{
 	margin: 20px 0 0 0;
 }
+
+#editCharacterForm{
+  margin: 20px 0 0 0;
+  width: 300px;
+	background: #141414;
+	border-radius: 15px;
+	padding: 20px;
+	color: #ffffff;
+ 
+}
+#editCharacterForm input{
+  border-radius: 10px;
+  height: 20px;
+  background: rgba(117, 224, 243, 0.384);
+}
+
+#editCharacterForm label{
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+#editCharacterForm button{
+  margin-left: 50px;
+  font-size: 16px;
+  color: black;
+  background: rgba(47, 142, 230, 0.253);
+  padding: 5px;
+  width: 200px;
+  cursor: pointer;
+  border: solid 5px black;
+  border-radius: 40px;
+
+}
+
+#addCharacterForm{
+  margin: 20px 0 0 0;
+}
+
+#addCharacterForm input{
+  border-radius: 10px;
+  height: 20px;
+  background: rgba(117, 224, 243, 0.384);
+}
+
+#addCharacterForm label{
+
+  font-size: 20px;
+  margin-right: 5px;
+  
+}
+
+#addCharacterForm button{
+  margin-left: 50px;
+  font-size: 16px;
+  color: black;
+  background: rgba(47, 142, 230, 0.253);
+  padding: 5px;
+  width: 200px;
+  cursor: pointer;
+  border: solid 5px black;
+  border-radius: 40px;
+
+}
+
