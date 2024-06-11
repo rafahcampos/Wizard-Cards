@@ -13,16 +13,37 @@ body {
   background-size: contain;
 }
 
+nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav div a img{
+  margin-left: 60px;
+  
+}
+
+
+
 .heading {
   display: flex;
   align-items: center;
   justify-content: space-around;
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 180px;
+  height: 160px;
 }
 
+.heading-ancora {
+  display: flex;
+  flex-direction: row;
+  width: 390px;
+
+
+}
 .heading a {
+  
   text-decoration: none;
   color: white;
   font-size: 24px;
@@ -36,7 +57,7 @@ main {
   align-items: center;
   flex: 1;
   overflow: auto;
-  min-height: calc(100vh - 240px);
+  min-height: calc(100vh - 320px);
   /*Faz com que o footer fique no final da pagina */
 }
 
@@ -81,11 +102,10 @@ main {
   background-color: #e9e9e9;
 }
 
-/*Modal*/
 
 .modal {
-  display: none; /*Inicialmente oculto*/
-  position: fixed; /*fixa o modal na tela*/
+  /*display: none; Inicialmente oculto*/
+   /*fixa o modal na tela*/
   z-index: 1; /*Fica em cima dos outros elementos*/
   left: 0;
   top: 0;
@@ -95,14 +115,19 @@ main {
   background-color: rgb(0,0,0);
   background-color: rgba(0, 0, 0, 0.4);
   padding-top: 60px;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background-color: #fefefe;
+  width: 100px;
+  background: #141414;
   margin: 5% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  border-radius: 15px;
+  width: 300px;
+  
 }
 
 .close {
@@ -146,11 +171,11 @@ font-weight: bold;
   align-items: center;
   justify-content: center;
   width: 350px;
-  height: 550px;
+  height: 600px;
   background: rgba(96, 96, 236, 0.7);
   border: solid 8px rgba(255, 211, 130, 0.7);
   border-radius: 32px;
-  margin: 30px 0 30px 30px;
+  margin: 30px 0 0px 30px;
 }
 .card-container-character img {
   display: flex;
@@ -167,6 +192,7 @@ font-weight: bold;
   font-weight: 700;
   font-size: 18px;
 
+  padding: 45px;
 
 }
 .card-container-informations {
@@ -176,8 +202,9 @@ font-weight: bold;
      margin: 0 0 10px 10px ;
 }
 .card-container-informations div{
-  margin: 0 0 5px 20px;
-  padding: 5px;
+  margin: 0 0px 5px 0px;
+  
+  
 }
 
 .button-submit{
@@ -191,7 +218,7 @@ font-weight: bold;
     margin-left: 14px;
     font-size: 16px;
     color: black;
-    background:gray;
+    background: rgba(47, 105, 230, 0.9);
     padding: 5px;
     width: 200px;
     cursor: pointer;
@@ -201,7 +228,7 @@ font-weight: bold;
   }
 
   .criar-personagem{
-    display: flex;
+    
     flex-direction: column;
     justify-content: initial;
     align-items: center;
@@ -210,24 +237,53 @@ font-weight: bold;
   
                        
 #autocompleteSuggestions{
+ 
   background: rgba(125, 154, 217, 0.79);
   color: black;
   font-weight: 700;
-  width: 300px;
+  width: 250px;
   border: solid 4px white;
   overflow: auto;
   max-height: 100px;
   margin-top: 10px;
+  margin-right: 20px;
+  visibility: hidden;
+  z-index: 1000;
  
 }
 
 #characterNameInput{
-  font-weight: 500;
-  width: 200px;
+  width: 250px;
   height: 30px;
+  background: rgba(47, 105, 230, 0.59);
+  
+
+  font-size: 12px;
+  color: black;
+  
+  padding: 5px;
+ 
+  cursor: pointer;
+  border: solid 5px black;
+  border-radius: 20px;
 }
 
+#characterNameInput::placeholder{
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  
 
+}
+
+#searchButton{
+  margin-left: 35px;
+}
+
+#addCharacterButton{
+  margin-left: 150px;
+  height: 50px;
+}
 
 #autocompleteSuggestions:hover{
   background: rgba(47, 105, 230, 0.79);
@@ -262,3 +318,42 @@ footer p {
 }
 
 
+/*----------------------------------------------------------------------*/
+
+/*MODAL - ESTILIZAÇÃO*/
+
+.modal {
+	position: absolute;
+  width: 100%;
+  height: 100%;
+	background: #000000e1;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal main{
+	width: 300px;
+	background: #141414;
+	border-radius: 15px;
+	padding: 20px;
+	color: #ffffff;
+}
+
+.modal main h2{
+	margin: 0;
+}
+
+.modal main form{
+	margin: 20px 0 0 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal main form button{
+	margin: 20px 0 0 0;
+}

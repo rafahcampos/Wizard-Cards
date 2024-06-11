@@ -31,14 +31,14 @@ function displayCharacterDetails(character) {
 
   console.log(cardId);
   
-    
+
   const cardHtml = `
     
     <div class="card-container-character" data-id="${cardId}">
-        <img src="${character.image}" alt="Imagem dos Personagens">
+        <img src="${character.image ?  character.image : 'https://via.placeholder.com/150'}" alt="Imagem dos Personagens">
         <div class="card-container-informations">
             <div class="character-information-style">
-                <p>Nome: ${character.name}</p>
+                <p>Nome: ${character.name }</p>
                 <p>Espécie: ${character.species}</p>
                 <p>Casa: ${character.house}</p>
                 <p>Ancestralidade: ${character.ancestry}</p>
@@ -85,14 +85,19 @@ function createCharacterCard() {
 
 function setupAutocomplete(inputElement, suggestionsElement, data) {
   inputElement.addEventListener("input", () => {
+    
+
     const query = inputElement.value.toLowerCase().trim();
+    document.getElementById('autocompleteSuggestions').style.visibility='visible';
     suggestionsElement.innerHTML = "";
+    
 
     if (query) {
       const filteredSuggestions = data.filter(character =>
         character.name.toLowerCase().includes(query));
 
       filteredSuggestions.forEach(character => {
+       
         const suggestionElement = document.createElement("div");
         suggestionElement.className = "autocomplete-suggestion"; //sugestões da lista suspensa
         suggestionElement.textContent = character.name;
@@ -108,6 +113,7 @@ function setupAutocomplete(inputElement, suggestionsElement, data) {
   document.addEventListener("click", (e) => {
     if (!suggestionsElement.contains(e.target) && e.target !== inputElement) {
       suggestionsElement.innerHTML = "";
+      document.getElementById('autocompleteSuggestions').style.visibility='hidden';
     }
   });
 }
@@ -159,6 +165,7 @@ function saveCharacterChanges(character, id) {
     </div>`;
 
   document.getElementById("editModal").style.display = "none";
+  
 
   //Após a alteração, redireciona os cliques para os novos botões (acima)
   card.querySelector('.edit-button').addEventListener('click', openEditModal);
@@ -207,12 +214,16 @@ document.querySelectorAll('.close').forEach(button => {
   button.addEventListener("click", () => {
     document.getElementById("editModal").style.display = 'none';
     document.getElementById("addModal").style.display = 'none';
+    
+   
+
   });
 });
 
 window.onclick = function (event) {
   if (event.target === document.getElementById("editModal")) {
     document.getElementById('editModal').style.display = 'none';
+    
   }
   if (event.target === document.getElementById("addModal")) {
     document.getElementById('addModal').style.display = 'none';

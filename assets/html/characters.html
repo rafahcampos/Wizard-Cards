@@ -1,96 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Characters</title>
-        <link rel="icon" href="/assets/img/characters-icon.png" sizes="32x32"
-            type="image/png">
-        <link rel="stylesheet" href="/assets/css/style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Characters</title>
+    <link rel="icon" href="/assets/img/characters-icon.png" sizes="32x32" type="image/png">
+    <link rel="stylesheet" href="/assets/css/style.css">
 
-    </head>
-    <body>
-        <header class="heading">
-            <div>
-                <a href="/index.html"><img src="/assets/img/logo.png"
-                        width="160px" height="70px"
-                        alt="Logo Harry Potter"></a>
+</head>
+
+<body>
+    <header class="heading">
+      
+        
+            <div id="addModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Adicionar um novo Personagem</h2>
+                    <form id="addCharacterForm">
+                        <label for="addName">Name:</label>
+                        <input type="text" id="addName" name="name"><br><br>
+                        <label for="addSpecies">Species:</label>
+                        <input type="text" id="addSpecies" name="species"><br><br>
+                        <label for="addHouse">House:</label>
+                        <input type="text" id="addHouse" name="house"><br><br>
+                        <label for="addAncestry">Ancestry:</label>
+                        <input type="text" id="addAncestry" name="ancestry"><br><br>
+                        <button type="submit">Adicionar Personagem</button>
+                    </form>
+                </div>
             </div>
             <div class="card-container-informations">
-                <div id="addModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Add New Character</h2>
-                        <form id="addCharacterForm">
-                            <label for="addName">Name:</label>
-                            <input type="text" id="addName" name="name"><br><br>
-                            <label for="addSpecies">Species:</label>
-                            <input type="text" id="addSpecies"
-                                name="species"><br><br>
-                            <label for="addHouse">House:</label>
-                            <input type="text" id="addHouse"
-                                name="house"><br><br>
-                            <label for="addAncestry">Ancestry:</label>
-                            <input type="text" id="addAncestry"
-                                name="ancestry"><br><br>
-                            <button type="submit">Adicionar Personagem</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="criar-personagem">
-                    <input type="text" id="characterNameInput"
-                        placeholder="Digite o nome de um personagem"
-                        autocomplete="off">
-                    <div id="autocompleteSuggestions"></div>
-                </div>
-                <button id="searchButton" >Incluir Personagem</button>
-                <button id="addCharacterButton">Criar
-                    Personagem</button>
-
+            <nav>
                 <div>
-
-                    
+                    <a href="/index.html"><img src="/assets/img/logo.png" width="160px" height="70px"
+                            alt="Logo Harry Potter"></a>
                 </div>
-                <b>
-                    <div>
-                        <a href="/assets/html/characters.html">Characters</a>
-                        <a href="/assets/html/spells.html">Spells</a>
-                        <a href="#">Build</a>
-                    </b>
-                </div>
-            </header>
-            <main class="main-character-container">
-                <div class="character-details"></div>
+            <div class="criar-personagem">
+                <div id="autocompleteSuggestions"></div>
+            </div>
+            <div>
+                <input type="text" id="characterNameInput" placeholder="Digite o nome de um personagem"
+                autocomplete="off">
+                
+                <button id="addCharacterButton">Criar Novo
+                    Personagem</button>
+                    <button id="searchButton">Incluir Personagem</button>
+            </div>
+            <b>
+                <div class="heading-ancora">
+                    <a href="/assets/html/characters.html">Characters</a>
+                    <a href="/assets/html/spells.html">Spells</a>
+            </b>
+        </div>
+    </nav>
+    </header>
+    <main class="main-character-container">
+    <div class="character-details"></div>
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Character</h2>
+                <form id="editCharacterForm">
+                    <label for="editName">Name:</label>
+                    <input type="text" id="editName" name="name"><br><br>
+                    <label for="editSpecies">Species:</label>
+                    <input type="text" id="editSpecies" name="species"><br><br>
+                    <label for="editHouse">House:</label>
+                    <input type="text" id="editHouse" name="house"><br><br>
+                    <label for="editAncestry">Ancestry:</label>
+                    <input type="text" id="editAncestry" name="ancestry"><br><br>
+                    <button type="submit">Salvar Mudanças</button>
+                </form>
+            </div>
+        </div>
 
-                <div id="editModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Edit Character</h2>
-                        <form id="editCharacterForm">
-                            <label for="editName">Name:</label>
-                            <input type="text" id="editName"
-                                name="name"><br><br>
-                            <label for="editSpecies">Species:</label>
-                            <input type="text" id="editSpecies"
-                                name="species"><br><br>
-                            <label for="editHouse">House:</label>
-                            <input type="text" id="editHouse"
-                                name="house"><br><br>
-                            <label for="editAncestry">Ancestry:</label>
-                            <input type="text" id="editAncestry"
-                                name="ancestry"><br><br>
-                            <button type="submit">Salvar Mudanças</button>
-                        </form>
-                    </div>
-                </div>
+    </main>
+    <footer>
+        <p>@ 2024 Campos | Blue Florest </p>
+    </footer>
+    <script src="/assets/js/main.js"></script>
+</body>
 
-            </main>
-            <footer>
-                <p>@ 2024 Campos | Blue Florest </p>
-            </footer>
-            <script src="/assets/js/main.js"></script>
-        </body>
-
-    </html>
+</html>
