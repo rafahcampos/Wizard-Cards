@@ -9,20 +9,71 @@
 </head>
 <body>
     <header class="heading">
+
+        <div id="addModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Adicionar um novo Feitiço</h2>
+                <form id="addSpellForm">
+                    <label for="editName">Name: </label>
+                    <input type="text" id="editName" name="name"><br><br>
+                    <label for="editDescription">Description: </label>
+                    <input type="text" id="editDescription" name="description"><br><br>
+               
+
+                    <button type="submit">Adicionar Feitiço</button>
+                </form>
+            </div>
+        </div>
+
         <div>
             <a href="/index.html"><img src="/assets/img/logo.png" width="160px" height="70px" alt="Logo Harry Potter"></a>
         </div>
+
+        <div class="criar-personagem">
+            <div id="autocompleteSuggestions"></div>
+        </div>
+        <div>
+            <input type="text" id="spellNameInput" placeholder="Digite o nome de um personagem"
+            autocomplete="off">
+            <button id="searchButton" >Incluir Feitiço</button>
+            <button id="addSpellButton">Criar Novo
+                Feitiço</button>
+
+        </div>
+
+
+
+        
         <b>
-            <div>
+            <div class="heading-ancora">
                 <a href="/assets/html/characters.html">Characters</a>
                 <a href="/assets/img/spells-icon.png">Spells</a>
         </b>
         </div>
     </header>
-    <main>
-        <div class="container-main">
-            <div class="spells-details"></div>
+    <main> <div class="spells-details"></div>
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Editar Feitiço</h2>
+                <form id="editSpellForm">
+                    <label for="editName">Name: </label>
+                    <input type="text" id="editName" name="name"><br><br>
+                    <label for="editDescription">Description: </label>
+                    <input type="text" id="editDescription" name="description"><br><br>
+                 
+                    <button type="submit">Salvar Mudanças</button>
+                </form>
+            </div>
+        </div>
+
+        
           
+          
+
+          
+
 
     </main>
 
