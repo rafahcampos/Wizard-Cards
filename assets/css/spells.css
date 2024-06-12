@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+  
+  body {
+    height: 100%;
+    margin: 0;
+    background-image: url("/assets/img/Background-one.jfif");
+    background-repeat: repeat;
+    background-size: contain;
+  }
+  
+  nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  nav div a img{
+    margin-left: 60px;
+    
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 160px;
+  }
+  .heading-ancora {
+    display: flex;
+    flex-direction: row;
+    width: 390px;
+  }
+  
+  .heading a {
+    
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    padding: 30px;
+    width: 100px;
+  }
+  
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    overflow: auto;
+    min-height: calc(100vh - 260px);
+    /*Faz com que o footer fique no final da pagina */
+  }
+    
+  .container-main {
+    display: flex;
+    flex-direction: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  .container-main iframe {
+    margin-top: 40px;
+  }
+  
+  /*Botão de Buscas*/
+  .spells-details{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .autocomplete-suggestions{
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    position: absolute;
+    background-color: white;
+    z-index: 1000;
+  }
+  
+  .autocomplete-suggestion{
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .autocomplete-suggestion:hover{
+    background-color: #e9e9e9;
+  }
+  
+  .modal {
+    /*display: none; Inicialmente oculto*/
+     /*fixa o modal na tela*/
+    z-index: 1; /*Fica em cima dos outros elementos*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    width: 100px;
+    background: #141414;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 15px;
+    width: 300px;
+  }
+  
+  .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  }
+  
+  .close:hover
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /*Character-page -------------------------------------------------*/
+  
+  .main-character-container {
+    display:flex;
+    justify-content: initial;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px 0 30px 30px;
+  }
+  
+  /*.main-character-information-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      width: 100%;
+      height: 100%;
+      margin: 30px 0 30px 30px;
+  }*/
+  
+  .card-container-character {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 600px;
+    background: rgba(96, 96, 236, 0.7);
+    border: solid 8px rgba(255, 211, 130, 0.7);
+    border-radius: 32px;
+    margin: 30px 0 0px 30px;
+  }
+  
+  .card-container-character img {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 320px;
+    height: 280px;
+    background: rgba(47, 105, 230, 0.4);
+    border: solid 4px rgba(255, 211, 130, 0.7);
+    border-radius: 32px;
+  }
+  
+  .character-information-style{
+    font-weight: 700;
+    font-size: 18px;
+    padding: 45px;
+  
+  }
+  .card-container-informations {
+       display: flex;
+       justify-content: space-between;
+       flex-direction: row;
+       margin: 0 0 10px 10px ;
+  }
+  
+  .card-container-informations div{
+    margin: 0 0px 5px 0px; 
+  }
+  
+  .button-submit{
+    display: inline-block;
+  }
+  
+  .card-container-informations button {
+    margin-top: 5px;
+      margin-left: 14px;
+      font-size: 16px;
+      color: black;
+      background: rgba(47, 105, 230, 0.9);
+      padding: 5px;
+      width: 200px;
+      cursor: pointer;
+      border: solid 5px black;
+      border-radius: 40px;
+    }
+  
+    .criar-personagem{
+      
+      flex-direction: column;
+      justify-content: initial;
+      align-items: center;
+     
+    }
+                    
+  #autocompleteSuggestions{
+   
+    background: rgba(125, 154, 217, 0.79);
+    color: black;
+    font-weight: 700;
+    width: 250px;
+    border: solid 4px white;
+    overflow: auto;
+    max-height: 100px;
+    margin-top: 10px;
+    margin-right: 20px;
+    visibility: hidden;
+    z-index: 1000;
+   
+  }
+  
+  #characterNameInput{
+    width: 250px;
+    height: 30px;
+    background: rgba(47, 105, 230, 0.59);
+    font-size: 20px;
+    color: black;
+    padding: 5px;
+    cursor: pointer;
+    border: solid 5px black;
+    border-radius: 20px;
+  }
+  
+  #characterNameInput::placeholder{
+    color: black;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  
+  #searchButton{
+    margin-left: 15px;
+    background: rgba(47, 105, 230, 0.59);
+  }
+  
+  #addCharacterButton{
+    margin-left: 150px;
+    height: 50px;
+    background: rgba(47, 105, 230, 0.59);
+  }
+  
+  #autocompleteSuggestions:hover{
+    background: rgba(47, 105, 230, 0.79);
+    
+  }
+  
+  #autocomplete-Suggestions:hover{
+    background-color: black;
+    
+  }
+  
+  /*----------------------------------------------------------------------*/
+  
+  /*Footer*/
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100px;
+  }
+  
+  footer p {
+    color: white;
+    font-size: 24px;
+    padding: 30px;
+  }
+  
+  /*----------------------------------------------------------------------*/
+  
+  /*MODAL - ESTILIZAÇÃO*/
+  
+  .modal {
+    display: none;
+      position: fixed;
+    width: 100%;
+    height: 100%;
+      background: #000000e1;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      display: none;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .modal-content{
+      width: 300px;
+      background: #141414;
+      border-radius: 15px;
+      padding: 20px;
+      color: #ffffff;
+  }
+  
+  .modal-content h2{
+      margin: 0;
+    font-size: 28px;
+    padding: 20pxpx;
+  }
+  
+  .modal main form{
+      margin: 20px 0 0 0;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .modal main form button{
+      margin: 20px 0 0 0;
+  }
+  
+  #editCharacterForm input{
+    border-radius: 10px;
+    height: 20px;
+    background: rgba(117, 224, 243, 0.384);
+  }
+  
+  #editCharacterForm label{
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  #editCharacterForm button{
+    margin-left: 50px;
+    font-size: 16px;
+    color: black;
+    background: rgba(47, 105, 230, 0.4);
+    padding: 5px;
+    width: 200px;
+    cursor: pointer;
+    border: solid 5px black;
+    border-radius: 40px;
+  }
+  
+  #addCharacterForm{
+    margin: 20px 0 0 0;
+  }
+  
+  #addCharacterForm input{
+    border-radius: 10px;
+    height: 20px;
+    background: rgba(117, 224, 243, 0.384);
+  }
+  
+  #addCharacterForm label{
+  
+    font-size: 20px;
+    margin-right: 5px;
+    
+  }
+  
+  #addCharacterForm button{
+    margin-left: 50px;
+    font-size: 16px;
+    color: black;
+    background: rgba(47, 142, 230, 0.253);
+    padding: 5px;
+    width: 200px;
+    cursor: pointer;
+    border: solid 5px black;
+    border-radius: 40px;
+  }
+  
+  
