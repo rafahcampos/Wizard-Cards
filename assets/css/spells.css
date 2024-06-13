@@ -159,7 +159,7 @@
     align-items: center;
     justify-content: center;
     width: 350px;
-    height: 600px;
+    height:auto;
     background: rgba(96, 96, 236, 0.7);
     border: solid 8px rgba(255, 211, 130, 0.7);
     border-radius: 32px;
@@ -172,6 +172,7 @@
     justify-content: flex-start;
     width: 320px;
     height: 280px;
+    margin-top: 10px;
     background: rgba(47, 105, 230, 0.4);
     border: solid 4px rgba(255, 211, 130, 0.7);
     border-radius: 32px;
@@ -211,7 +212,7 @@
       border-radius: 40px;
     }
   
-    .criar-personagem{
+    .criar-spell{
       
       flex-direction: column;
       justify-content: initial;

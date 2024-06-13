@@ -31,29 +31,30 @@ function displaySpellsDetails(spell) {
 
     const cardId = `card-${spellsIdCounter}`;
 
-    console.log(cardId);
+    console.log(`CardId:${cardId}`);
 
     const cardHtml = `
-        <div class="card-container-spell" data-id="${cardId}">
+    
+    <div class="card-container-spell" data-id="${cardId}">
         <img src="/assets/img/spells-icon.png" alt="Imagem dos Feitiços">
-            <div class="card-container-informations">
-                <div class="spell-information-style">
-                    <p>Spell: ${spell.name}</p>
-                    <p>Descrição: ${spell.description}</p>
-                    <div class="button-submit">
-                        <button type="button" class="edit-button"
-                             data-id="${cardId}">
-                             Alterar Feitiço</button>
-                    </div>
-                </div>
+        <div class="card-container-informations">
+            <div class="spell-information-style">
+                <p>Nome do Feitiço: ${spell.name}</p><br>
+                <p>Descrição: ${spell.description}</p>
                 <div class="button-submit">
-                    <button type="button" class="delete-button"
+                    <button type="button" class="edit-button"
+                        data-id="${cardId}">
+                        Alterar Feitiço</button>
+                </div>
+           
+            <div class="button-submit">
+                <button type="button" class="delete-button"
                     data-id="${cardId}">
                     Excluir Feitiço</button>
-                </div>
             </div>
         </div>
-    </div>`;
+    </div>
+</div>`;
 
     containerSpellDetails.insertAdjacentHTML('beforeend', cardHtml);
 
@@ -95,6 +96,7 @@ function setupAutocomplete(inputElement, suggestionsElement, data) {
 
                 const suggestionElement = document.createElement("div");
                 suggestionElement.className = "autocomplete-suggestion";
+                suggestionElement.textContent = spell.name;
                 suggestionsElement.appendChild(suggestionElement);
                 suggestionElement.addEventListener("click", () => {
                     inputElement.value = spell.name;
@@ -122,6 +124,7 @@ function openEditModal(event) {
         document.getElementById('editName').value = spell.name;
         document.getElementById('editDescription').value = spell.description;
         document.getElementById('editModal').style.display = 'block';
+
         document.getElementById('editSpellForm').onsubmit = function (e) {
             e.preventDefault();
             saveSpellChanges(spell, id);
@@ -137,8 +140,8 @@ function saveSpellChanges(spell, id) {
 
     card.querySelector(".card-container-informations").innerHTML = `
         <div class="spell-information-style">
-             <p>Nome: ${spell.name}</p>
-              <p>Descrição: ${spell.description}</p>
+            <p>Nome: ${spell.name}</p><br>
+            <p>Descrição: ${spell.description}</p>
         
        <div class="button-submit">
          <button type="button" class="edit-button" data-id="${id}">Alterar Feitiço</button>
@@ -155,9 +158,9 @@ function saveSpellChanges(spell, id) {
 }
 
 function deleteSpellCard(event) {
-    const id = event.target.dataset.td;
+    const id = event.target.dataset.id;
     const card = document.querySelector(`.card-container-spell[data-id="${id}"]`);
-  card.remove();
+    card.remove();
 }
 
 function openAddModal(){
@@ -170,7 +173,7 @@ function addNewSpell(event) {
     const newSpell = {
     name: document.getElementById("addName").value,
     description: document.getElementById("addDescription").value,
-    };
+    image: "/assets/img/spells-icon.png",}; //Imagem padrão
 
     spellsData.push(newSpell);
     displaySpellsDetails(newSpell);
@@ -183,8 +186,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupAutocomplete(
         document.getElementById("spellNameInput"),
         document.getElementById("autocompleteSuggestions"),
-        spellsData
-    );
+        spellsData);
 
     document.getElementById("addSpellButton").addEventListener("click",openAddModal);
     document.getElementById("addSpellForm").addEventListener("submit", addNewSpell);

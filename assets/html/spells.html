@@ -1,86 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spells</title>
-    <link rel="icon" href="/assets/img/spells-icon.png" sizes="32x32" type="image/png">
-    <link rel="stylesheet" href="/assets/css/spells.css">
-</head>
-<body>
-    <header class="heading">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Spells</title>
+        <link rel="icon" href="/assets/img/spells-icon.png" sizes="32x32"
+            type="image/png">
+        <link rel="stylesheet" href="/assets/css/spells.css">
+    </head>
+    <body>
+        <header class="heading">
 
-        <div id="addModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Adicionar um novo Feitiço</h2>
-                <form id="addSpellForm">
-                    <label for="editName">Name: </label>
-                    <input type="text" id="editName" name="name"><br><br>
-                    <label for="editDescription">Description: </label>
-                    <input type="text" id="editDescription" name="description"><br><br>
-               
-
-                    <button type="submit">Adicionar Feitiço</button>
-                </form>
+            <div id="addModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Adicionar um novo Feitiço</h2>
+                    <form id="addSpellForm">
+                        <label for="addName">Name: </label>
+                        <input type="text" id="addName" name="name"><br><br>
+                        <label for="addDescription">Descrição: </label>
+                        <input type="text" id="addDescription"
+                            name="description"><br><br>
+                        <button type="submit">Adicionar Feitiços</button>
+                    </form>
+                </div>
             </div>
-        </div>
+            <div class="card-container-informations">
+                <nav>
+                    <div>
+                        <a href="/index.html"><img src="/assets/img/logo.png"
+                                width="160px" height="70px"
+                                alt="Logo Harry Potter"></a>
+                    </div>
+                    <div class="criar-spell">
+                        <div id="autocompleteSuggestions"></div>
+                    </div>
+                    <div>
+                        <input type="text" id="spellNameInput"
+                            placeholder="Digite o nome de um feitiiço"
+                            autocomplete="off">
+                        <button id="searchButton">Incluir Feitiço</button>
+                        <button id="addSpellButton">Criar Novo
+                            Feitiço</button>
+                    </div>
+                    <b>
+                        <div class="heading-ancora">
+                            <a
+                                href="/assets/html/characters.html">Characters</a>
+                            <a href="/assets/html/spells.html">Spells</a>
+                        </b>
+                    </div>
+                </nav>
+            </header>
+            <main class="main-spell-container">
+                <div class="spells-details"></div>
+                <div id="editModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Editar Feitiço</h2>
+                        <form id="editSpellForm">
+                            <label for="editName">Name: </label>
+                            <input type="text" id="editName"
+                                name="name"><br><br>
+                            <label for="editDescription">Description: </label>
+                            <input type="text" id="editDescription"
+                                name="description"><br><br>
 
-        <div>
-            <a href="/index.html"><img src="/assets/img/logo.png" width="160px" height="70px" alt="Logo Harry Potter"></a>
-        </div>
-
-        <div class="criar-personagem">
-            <div id="autocompleteSuggestions"></div>
-        </div>
-        <div>
-            <input type="text" id="spellNameInput" placeholder="Digite o nome de um personagem"
-            autocomplete="off">
-            <button id="searchButton" >Incluir Feitiço</button>
-            <button id="addSpellButton">Criar Novo
-                Feitiço</button>
-
-        </div>
-
-
-
-        
-        <b>
-            <div class="heading-ancora">
-                <a href="/assets/html/characters.html">Characters</a>
-                <a href="/assets/img/spells-icon.png">Spells</a>
-        </b>
-        </div>
-    </header>
-    <main> <div class="spells-details"></div>
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Editar Feitiço</h2>
-                <form id="editSpellForm">
-                    <label for="editName">Name: </label>
-                    <input type="text" id="editName" name="name"><br><br>
-                    <label for="editDescription">Description: </label>
-                    <input type="text" id="editDescription" name="description"><br><br>
-                 
-                    <button type="submit">Salvar Mudanças</button>
-                </form>
-            </div>
-        </div>
-
-        
-          
-          
-
-          
-
-
-    </main>
-
-    <footer>
-        <p>@ 2024 Campos | Blue Florest </p>
-    </footer>
-    <script src="/assets/js/spells.js"></script>
-</body>
-
+                            <button type="submit">Salvar Mudanças</button>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        <footer>
+            <p>@ 2024 Campos | Blue Florest </p>
+        </footer>
+        <script src="/assets/js/spells.js"></script>
+    </body>
 </html>
