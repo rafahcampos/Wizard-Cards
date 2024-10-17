@@ -5,6 +5,105 @@
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
+@media (max-width: 768px) {
+  .heading {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .heading-ancora {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .heading a {
+    font-size: 20px;
+    padding: 15px;
+    width: auto;
+  }
+
+  .container-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-container-character {
+    width: 300px;
+    height: auto;
+    margin: 20px;
+  }
+
+  .card-container-character img {
+    width: 100%;
+    height: auto;
+  }
+
+  #characterNameInput, #addCharacterButton {
+    width: 100%;
+  }
+
+  .card-container-informations button {
+    width: 100%;
+  }
+
+  footer {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  footer p {
+    font-size: 18px;
+  }
+}
+
+/* Estilos para celulares (largura máxima de 480px) */
+@media (max-width: 480px) {
+  nav div a img {
+    margin-left: 0;
+  }
+
+  .heading {
+    padding: 10px;
+  }
+
+  .heading a {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .card-container-character {
+    width: 250px;
+  }
+
+  .character-information-style {
+    font-size: 16px;
+    padding: 20px;
+  }
+
+  .card-container-informations button {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #editCharacterForm input,
+  #addCharacterForm input {
+    width: 100%;
+  }
+
+  #editCharacterForm button,
+  #addCharacterForm button {
+    width: 100%;
+  }
+}
+
 body {
   height: 100%;
   margin: 0;
