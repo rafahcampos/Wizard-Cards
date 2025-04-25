@@ -1,4 +1,4 @@
-const apiSpells = "https://hp-api.herokuapp.com/api/spells";
+const apiSpells = "https://hp-api.onrender.com/api/spells";
 
 let spellsData = [];
 let spellsIdCounter = 0;
