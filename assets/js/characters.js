@@ -1,5 +1,5 @@
 //https://hp-api.herokuapp.com/
-const apiCharacters = "https://hp-api.herokuapp.com/api/characters";
+const apiCharacters = "https://hp-api.onrender.com/api/characters";
 //const apiSpells = ("https://hp-api.herokuapp.com/api/spells");
 let charactersData = [];
 let cardIdCounter = 0; //contador que garante que cada card terá um id único
